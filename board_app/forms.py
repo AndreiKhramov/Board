@@ -12,7 +12,6 @@ class DocumentForm(forms.Form):
 
 # Создаём модельную форму
 class PostForm(ModelForm):
-    # check_box = BooleanField(label='Алло, Галочка!')
     class Meta:
         model = Post
-        fields = ['name', 'post_auth', 'category', 'text']
+        fields = ['title', 'category', 'post_auth', 'post_text']

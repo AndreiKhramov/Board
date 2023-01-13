@@ -1,0 +1,37 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Our posts
+{% endblock title %}
+
+{% block content %}
+<td>
+    <a href="{% url 'create_post' %}"><u> Добавить пост </u></a>
+</td>
+
+<hr>
+
+<h1> Все посты </h1>
+
+
+<table style="width: auto; height: auto; text-align: center;" >
+           <tr>
+               <td> <strong> Название </strong></td>
+               <td> <strong> Дата добавления </strong></td>
+               <td style="width: auto; height: auto; text-align: center;" > <strong> Текст статьи </strong> </td>
+           </tr>
+
+
+           {% for p in posts %}
+           <tr>
+               <td> <a href="{% url 'post' p.id %}">{{ p.title }}</a> </td>
+               <td>{{ p.add_time|date:'d M Y' }}</td>
+               <td>{{ p.post_text|truncatewords:20|safe }}</td>
+               <td> <a href="{% url 'update_posts' p.id %}"><u> update </u></a> - </td>
+               <td> - <a href="{% url 'delete_post' p.id %}"><u> Удалить </u></a> </td>
+           </tr>
+           {% endfor %}
+
+</table>
+
+{% endblock content %}
