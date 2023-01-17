@@ -10,7 +10,7 @@ class Post(models.Model):
     add_time = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=2, choices=PostTypes)
     post_text = RichTextField(blank=True, null=True)
-
+    #
     # def __str__(self):
     #     return f'{self.title()}'
 

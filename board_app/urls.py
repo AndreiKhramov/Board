@@ -3,7 +3,7 @@ from .views import PostList, PostDetail, PostDeleteView, PostUpdateView, PostCre
 
 
 urlpatterns = [
-    path('', PostList.as_view()),
+    path('', PostList.as_view(), name='posts'),
     path('<int:pk>', PostDetail.as_view(), name='post'),
     path('delete/<int:pk>', PostDeleteView.as_view(), name='delete_post'),
     path('update/<int:pk>', PostUpdateView.as_view(), name='update_posts'),

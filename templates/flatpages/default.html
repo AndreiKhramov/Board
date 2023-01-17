@@ -22,10 +22,17 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'posts' %}">Home</a></li>
+
+                        {% if user.is_authenticated %}
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link " aria-current="page" href="{% url 'account_signup' %}"> Sign up </a></li>
+
+                        {% endif %}
+
                     </ul>
                 </div>
             </div>
@@ -39,7 +46,7 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1"> Dear <a class="badge bg-secondary text-decoration-none link-light" href="#!">  {{request.user}} <a/>! Welcome to  </h1>
+                            <h1 class="fw-bolder mb-1"> Dear <a class="badge bg-secondary text-decoration-none link-light" href="#!"a>  {{request.user}} <a/>! Welcome to </h1>
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2"> {{ flatpage.content }} </div>
                             <!-- Post categories-->

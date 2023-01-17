@@ -14,4 +14,4 @@ class DocumentForm(forms.Form):
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'category', 'post_auth', 'post_text']
+        fields = ['title', 'category', 'post_auth', 'post_text'[:50]]
