@@ -1,0 +1,19 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Confirm reply
+{% endblock title %}
+
+{% block content %}
+<h3>Вы действительно хотите принять данный отзыв?</h3>
+
+<h1> {{ reply.reply_text }} </h1> на
+{{ reply.reply_post }} by {{ reply.reply_post.post_auth }}
+
+<h4>При подтверждении автору отзыва будет отправлен e-mail</h4>
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить">
+</form>
+
+{% endblock content %}

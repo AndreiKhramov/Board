@@ -1,14 +1,14 @@
 {% extends 'flatpages/default.html' %}
 
 {% block title %}
-Our post
+Our reply
 {% endblock title %}
 
 {% block content %}
-<h2>Вы действительно хотите удалить данный пост?</h2>
+<h2>Вы действительно хотите удалить данный отзыв?</h2>
 
-<h1> {{ post.title }} </h1>
-<h4> by {{ post.post_auth }} </h4>
+<h1> {{ reply.reply_text }} </h1> на
+{{ reply.reply_post }} by {{ reply.reply_post.post_auth }}
 
 <form method="POST">
     {% csrf_token %}

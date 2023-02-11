@@ -1,18 +1,16 @@
 {% extends 'flatpages/default.html' %}
 
 {% block title %}
-Our posts
+My posts
 {% endblock title %}
 
 {% block content %}
-<td>
-    <a href="{% url 'create_post' %}"><u> Добавить пост </u></a>
-</td>
-
 <hr>
-
+<!--<form method="GET">-->
+<!--    {{ filter.form }}-->
+<!--    <input type="submit" value="Найти">-->
+<!--</form>-->
 <h1> Все посты </h1>
-
 
 <table style="width: auto; height: auto; text-align: center;" >
            <tr>
@@ -23,7 +21,7 @@ Our posts
            </tr>
 
 
-           {% for p in posts %}
+           {% for p in post_list %}
            <tr>
                <td> <a href="{% url 'post' p.id %}">{{ p.title }}</a> </td>
                <td>{{ p.add_time|date:'d M Y' }}</td>
@@ -32,6 +30,20 @@ Our posts
                <td> <a href="{% url 'update_posts' p.id %}"><u> update </u></a> - </td>
                <td> - <a href="{% url 'delete_post' p.id %}"><u> Удалить </u></a> </td>
            </tr>
+
+               <tr>
+               {% if p.replies.all %}
+               {% for r in p.replies.all %}
+                    <table> <td> {{ r.reply_auth }} : {{ r.reply_text }}
+                        {% if not r.confirmation %}
+                    - <a href="{% url 'confirm_reply' r.id %}"> <u> Принять </u> </a>
+                        {% endif %}
+                    - <a href="{% url 'delete_reply' r.id %}"> <u> Удалить </u> </a> </td>
+                    </table>
+               {% endfor %}
+               {% endif %}
+                </tr>
+
            {% endfor %}
 
 </table>

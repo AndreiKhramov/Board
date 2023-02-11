@@ -6,13 +6,52 @@ Our post
 
 {% block content %}
 <h1> {{ post.title }} </h1>
-by {{ post.post_auth }}
+by <strong> {{ post.post_auth }} </strong>
+<hr>
   <table style="width: auto; height: auto; text-align: center;" >
            <tr>
-               <p>{{ post.category }}</p>
-               <p>{{ post.add_time|date:'d M Y' }}</p>
+               <p> <strong> Category </strong>: {{ post.category }}</p>
+               <p> <strong> Date of post </strong> : {{ post.add_time|date:'d M Y' }}</p>
                <p>{{ post.post_text|safe }}</p>
            </tr>
   </table>
+
+  <!-- Comments section-->
+                    <section class="mb-5">
+                        <div class="card bg-light">
+                            <div class="card-body">
+
+                                <!-- Comment form-->
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <input type="submit" value="Добавить комментарий" >
+                                </form>
+
+                                <!-- Comments-->
+        {% if post.replies.all %}
+
+            <br/>
+            <h3> Replies for <strong> {{ post.title }} </strong> </h3>
+            <br/>
+
+            {% for reply in post.replies.all %}
+            <div class="d-flex">
+                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                <div class="ms-3">
+                    <div class="fw"> <strong> {{ reply.reply_auth }} : </strong> {{ reply.reply_text }} </div>
+                </div>
+                </div>
+            <br/>
+
+            {% endfor %}
+
+            {% else %}
+                    <br/>
+                    <p> <strong> No replies for {{ post.title }} </strong> </p>
+        {% endif %}
+                            </div>
+                        </div>
+                    </section>
 
 {% endblock content %}

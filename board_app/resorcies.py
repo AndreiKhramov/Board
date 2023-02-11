@@ -1,13 +1,13 @@
 PostTypes = (
-    ('TK', 'Tanks'),
-    ('HL', 'Hills'),
-    ('DD', 'DamageDealers'),
-    ('SL', 'Sellers'),
-    ('GM', 'Gild_master'),
-    ('QG', 'Quest_givers'),
-    ('ST', 'Smiths'),
-    ('TR', 'Tanners'),
-    ('PT', 'Potions'),
-    ('SM', 'SpellMasters')
+    ('Tanks', 'Tanks'),
+    ('Hills', 'Hills'),
+    ('DamageDealers', 'DamageDealers'),
+    ('Sellers', 'Sellers'),
+    ('Gild_master', 'Gild_master'),
+    ('Quest_givers', 'Quest_givers'),
+    ('Smiths', 'Smiths'),
+    ('Tanners', 'Tanners'),
+    ('Potions', 'Potions'),
+    ('SpellMasters', 'SpellMasters')
 )
 
